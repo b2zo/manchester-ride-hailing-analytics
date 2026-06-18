@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e817316d900fe0e5ae951256fdc279ae {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e817316d900fe0e5ae951256fdc279ae" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e817316d900fe0e5ae951256fdc279ae = L.map(
+                "map_e817316d900fe0e5ae951256fdc279ae",
+                {
+                    center: [53.4808, -2.2426],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cda689a2edc1ab9f0ba0d2aabad87834 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_cda689a2edc1ab9f0ba0d2aabad87834.addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+            var heat_map_7a637414466eb9fb4934caebc8057122 = L.heatLayer(
+                [[53.474, -2.25, 56.357538209476715], [53.365, -2.2727, 56.282344533100925], [53.4721, -2.2973, 56.982146464282394], [53.4631, -2.2913, 56.1996629768122], [53.4774, -2.2309, 57.02372790766012], [53.4701, -2.2936, 56.59245055352403], [53.4106, -2.1575, 56.804219054862735], [53.4658, -2.3499, 56.50067925543312]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 13,
+  "radius": 35,
+  "blur": 20,
+}
+            );
+        
+    
+            heat_map_7a637414466eb9fb4934caebc8057122.addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+            var marker_7cd6cd06b01a93eca2972eaaaf6e2b81 = L.marker(
+                [53.474, -2.25],
+                {
+}
+            ).addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+        var popup_1a532c975b0400b8fbfc636f76cf49da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ab81bf51522abf8982fdbe783e5d7d60 = $(`<div id="html_ab81bf51522abf8982fdbe783e5d7d60" style="width: 100.0%; height: 100.0%;"><b>Deansgate</b><br>Trips: 662<br>Avg earnings/hour: £56.36<br>Total earnings: £21954.25</div>`)[0];
+                popup_1a532c975b0400b8fbfc636f76cf49da.setContent(html_ab81bf51522abf8982fdbe783e5d7d60);
+            
+        
+
+        marker_7cd6cd06b01a93eca2972eaaaf6e2b81.bindPopup(popup_1a532c975b0400b8fbfc636f76cf49da)
+        ;
+
+        
+    
+    
+            marker_7cd6cd06b01a93eca2972eaaaf6e2b81.bindTooltip(
+                `<div>
+                     Deansgate
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_81e6aebb198f4791fd9b2e540b2ed3af = L.marker(
+                [53.365, -2.2727],
+                {
+}
+            ).addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+        var popup_3dd911130b324387938d5a45ee7f22cc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_12ea758aa230bfe700aab83e8893422e = $(`<div id="html_12ea758aa230bfe700aab83e8893422e" style="width: 100.0%; height: 100.0%;"><b>Manchester Airport</b><br>Trips: 631<br>Avg earnings/hour: £56.28<br>Total earnings: £22164.19</div>`)[0];
+                popup_3dd911130b324387938d5a45ee7f22cc.setContent(html_12ea758aa230bfe700aab83e8893422e);
+            
+        
+
+        marker_81e6aebb198f4791fd9b2e540b2ed3af.bindPopup(popup_3dd911130b324387938d5a45ee7f22cc)
+        ;
+
+        
+    
+    
+            marker_81e6aebb198f4791fd9b2e540b2ed3af.bindTooltip(
+                `<div>
+                     Manchester Airport
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2562c78ce925b15352c684cef0775427 = L.marker(
+                [53.4721, -2.2973],
+                {
+}
+            ).addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+        var popup_2dec2fbbabf89408eff913c10edbf08f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71174d25c367b808f2f96e43bf14d179 = $(`<div id="html_71174d25c367b808f2f96e43bf14d179" style="width: 100.0%; height: 100.0%;"><b>MediaCityUK</b><br>Trips: 619<br>Avg earnings/hour: £56.98<br>Total earnings: £21306.19</div>`)[0];
+                popup_2dec2fbbabf89408eff913c10edbf08f.setContent(html_71174d25c367b808f2f96e43bf14d179);
+            
+        
+
+        marker_2562c78ce925b15352c684cef0775427.bindPopup(popup_2dec2fbbabf89408eff913c10edbf08f)
+        ;
+
+        
+    
+    
+            marker_2562c78ce925b15352c684cef0775427.bindTooltip(
+                `<div>
+                     MediaCityUK
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d3687ae7d8194e21023a9163be8e0dce = L.marker(
+                [53.4631, -2.2913],
+                {
+}
+            ).addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+        var popup_02af5866080a59a55d167e324607a653 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_950ad7d6678e88d1960b22d6bedda725 = $(`<div id="html_950ad7d6678e88d1960b22d6bedda725" style="width: 100.0%; height: 100.0%;"><b>Old Trafford</b><br>Trips: 632<br>Avg earnings/hour: £56.20<br>Total earnings: £21406.96</div>`)[0];
+                popup_02af5866080a59a55d167e324607a653.setContent(html_950ad7d6678e88d1960b22d6bedda725);
+            
+        
+
+        marker_d3687ae7d8194e21023a9163be8e0dce.bindPopup(popup_02af5866080a59a55d167e324607a653)
+        ;
+
+        
+    
+    
+            marker_d3687ae7d8194e21023a9163be8e0dce.bindTooltip(
+                `<div>
+                     Old Trafford
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_953ee3bd83981a5199910fb0d5c19494 = L.marker(
+                [53.4774, -2.2309],
+                {
+}
+            ).addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+        var popup_d14dbc76e8f148ac9ade0d4aa6e49dbf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3906f77fbec4cd13577b4d1104357cad = $(`<div id="html_3906f77fbec4cd13577b4d1104357cad" style="width: 100.0%; height: 100.0%;"><b>Piccadilly</b><br>Trips: 607<br>Avg earnings/hour: £57.02<br>Total earnings: £20702.69</div>`)[0];
+                popup_d14dbc76e8f148ac9ade0d4aa6e49dbf.setContent(html_3906f77fbec4cd13577b4d1104357cad);
+            
+        
+
+        marker_953ee3bd83981a5199910fb0d5c19494.bindPopup(popup_d14dbc76e8f148ac9ade0d4aa6e49dbf)
+        ;
+
+        
+    
+    
+            marker_953ee3bd83981a5199910fb0d5c19494.bindTooltip(
+                `<div>
+                     Piccadilly
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a7ce853bca21f674f06f8027a7c967ed = L.marker(
+                [53.4701, -2.2936],
+                {
+}
+            ).addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+        var popup_98a774291f54d35837c05666da498882 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9203f5917f85ff71488227c8e45789ae = $(`<div id="html_9203f5917f85ff71488227c8e45789ae" style="width: 100.0%; height: 100.0%;"><b>Salford Quays</b><br>Trips: 599<br>Avg earnings/hour: £56.59<br>Total earnings: £20149.87</div>`)[0];
+                popup_98a774291f54d35837c05666da498882.setContent(html_9203f5917f85ff71488227c8e45789ae);
+            
+        
+
+        marker_a7ce853bca21f674f06f8027a7c967ed.bindPopup(popup_98a774291f54d35837c05666da498882)
+        ;
+
+        
+    
+    
+            marker_a7ce853bca21f674f06f8027a7c967ed.bindTooltip(
+                `<div>
+                     Salford Quays
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cdca9ab26c86fc4dbac129fe63aa3e39 = L.marker(
+                [53.4106, -2.1575],
+                {
+}
+            ).addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+        var popup_ac21189d4e26d038c4d47bb59d9af531 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_192671d079bb4715ce40a9abadc10394 = $(`<div id="html_192671d079bb4715ce40a9abadc10394" style="width: 100.0%; height: 100.0%;"><b>Stockport</b><br>Trips: 598<br>Avg earnings/hour: £56.80<br>Total earnings: £19641.39</div>`)[0];
+                popup_ac21189d4e26d038c4d47bb59d9af531.setContent(html_192671d079bb4715ce40a9abadc10394);
+            
+        
+
+        marker_cdca9ab26c86fc4dbac129fe63aa3e39.bindPopup(popup_ac21189d4e26d038c4d47bb59d9af531)
+        ;
+
+        
+    
+    
+            marker_cdca9ab26c86fc4dbac129fe63aa3e39.bindTooltip(
+                `<div>
+                     Stockport
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f54ec3060126dded1ea1b42bcbff5f92 = L.marker(
+                [53.4658, -2.3499],
+                {
+}
+            ).addTo(map_e817316d900fe0e5ae951256fdc279ae);
+        
+    
+        var popup_cc780cc8bee06183df696dc112e4bfa6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_399789fbe66e0cdad2e47fd5496e8b8c = $(`<div id="html_399789fbe66e0cdad2e47fd5496e8b8c" style="width: 100.0%; height: 100.0%;"><b>Trafford Centre</b><br>Trips: 652<br>Avg earnings/hour: £56.50<br>Total earnings: £21557.00</div>`)[0];
+                popup_cc780cc8bee06183df696dc112e4bfa6.setContent(html_399789fbe66e0cdad2e47fd5496e8b8c);
+            
+        
+
+        marker_f54ec3060126dded1ea1b42bcbff5f92.bindPopup(popup_cc780cc8bee06183df696dc112e4bfa6)
+        ;
+
+        
+    
+    
+            marker_f54ec3060126dded1ea1b42bcbff5f92.bindTooltip(
+                `<div>
+                     Trafford Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
