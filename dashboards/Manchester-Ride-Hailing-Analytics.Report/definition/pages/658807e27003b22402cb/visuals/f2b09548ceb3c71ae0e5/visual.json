@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "f2b09548ceb3c71ae0e5",
+  "position": {
+    "x": 714.89361702127667,
+    "y": 418.894,
+    "z": 2000,
+    "height": 280.1215805471125,
+    "width": 463.95136778115506,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trips_clean"
+                    }
+                  },
+                  "Property": "hour_of_day"
+                }
+              },
+              "queryRef": "trips_clean.hour_of_day",
+              "nativeQueryRef": "hour_of_day",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trips_clean"
+                    }
+                  },
+                  "Property": "airport_trip"
+                }
+              },
+              "queryRef": "trips_clean.airport_trip",
+              "nativeQueryRef": "airport_trip"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trips_clean"
+                    }
+                  },
+                  "Property": "Average Profit Per Hour"
+                }
+              },
+              "queryRef": "trips_clean.Average Profit Per Hour",
+              "nativeQueryRef": "Average Profit Per Hour"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "trips_clean"
+                  }
+                },
+                "Property": "Average Profit Per Hour"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Airport Profitability by Hour'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

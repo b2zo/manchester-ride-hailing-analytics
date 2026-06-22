@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "kpi_trips_indicator",
+  "position": {
+    "x": 489.24012158054711,
+    "y": 179.93920972644378,
+    "z": 11000,
+    "height": 81.702127659574472,
+    "width": 199.39209726443769,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trips_clean"
+                    }
+                  },
+                  "Property": "Trips KPI Indicator"
+                }
+              },
+              "queryRef": "trips_clean.Trips KPI Indicator",
+              "nativeQueryRef": "Trips KPI Indicator"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#107C10'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "trips_clean.Trips KPI Indicator"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

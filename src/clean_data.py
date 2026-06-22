@@ -4,31 +4,26 @@ df = pd.read_csv("data/raw/trips_raw.csv")
 
 print(f"Rows loaded: {len(df)}")
 
-# Remove duplicates
 df = df.drop_duplicates()
-
-# Remove missing values
 df = df.dropna()
 
-# Create profitability metrics
-df["earnings_per_mile"] = (
-    df["total_earnings"] / df["distance_miles"]
-)
+df["start_datetime"] = pd.to_datetime(df["start_datetime"])
+df["trip_date"] = pd.to_datetime(df["trip_date"])
+
+df["earnings_per_mile"] = df["total_earnings"] / df["distance_miles"]
 
 df["earnings_per_hour"] = (
     df["total_earnings"] /
     (df["duration_minutes"] / 60)
 )
 
-# Airport flag
-df["airport_trip"] = (
-    (df["pickup_area"] == "Manchester Airport") |
-    (df["dropoff_area"] == "Manchester Airport")
+df["profit_per_hour"] = (
+    df["net_profit"] /
+    (df["duration_minutes"] / 60)
 )
 
-df.to_csv(
-    "data/processed/trips_clean.csv",
-    index=False
-)
+df["is_weekend"] = df["day_of_week"].isin(["Friday", "Saturday", "Sunday"])
+
+df.to_csv("data/processed/trips_clean.csv", index=False)
 
 print("Cleaned dataset saved")

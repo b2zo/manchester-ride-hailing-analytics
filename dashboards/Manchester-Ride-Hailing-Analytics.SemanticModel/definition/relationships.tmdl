@@ -1,0 +1,10 @@
+relationship 448498dd-5d49-4c42-8cfb-4365030bcd13
+	joinOnDateBehavior: datePartOnly
+	fromColumn: trips_clean.start_datetime
+	toColumn: LocalDateTable_376e9582-1538-4dd2-a3cc-50f54d53f0a7.Date
+
+relationship 50a8ed28-9a10-4b2e-8347-5e4828ae5957
+	joinOnDateBehavior: datePartOnly
+	fromColumn: trips_clean.trip_date
+	toColumn: LocalDateTable_f8179624-0071-488c-b871-5f5d710969e4.Date
+

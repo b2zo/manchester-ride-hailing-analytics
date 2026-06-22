@@ -1,0 +1,135 @@
+{
+  "name": "Manchester Driver Strategy Theme",
+  "dataColors": [
+    "#118DFF",
+    "#107C10",
+    "#FF8C00",
+    "#7B4FFF",
+    "#00B7C3",
+    "#D13438",
+    "#1B2A4A",
+    "#5FB489"
+  ],
+  "foreground": "#1B2733",
+  "background": "#FFFFFF",
+  "foregroundNeutralSecondary": "#64748B",
+  "backgroundLight": "#F8FAFC",
+  "foregroundNeutralTertiary": "#9AA5B1",
+  "backgroundNeutral": "#D8DEE6",
+  "tableAccent": "#118DFF",
+  "maximum": "#107C10",
+  "center": "#F2C94C",
+  "minimum": "#D13438",
+  "bad": "#D13438",
+  "neutral": "#FF8C00",
+  "good": "#107C10",
+  "visualStyles": {
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#EEF1F6"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#D8DEE6"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#E2E7EF"
+              }
+            },
+            "radius": 10
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#1B2A4A"
+              }
+            },
+            "transparency": 88,
+            "position": "Outer",
+            "preset": "Custom",
+            "shadowSize": 10,
+            "distance": 2,
+            "angle": 90
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#1B2733"
+              }
+            },
+            "background": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "bold": true,
+            "fontSize": 12
+          }
+        ]
+      }
+    },
+    "textbox": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#E2E7EF"
+              }
+            },
+            "radius": 10
+          }
+        ]
+      }
+    }
+  }
+}

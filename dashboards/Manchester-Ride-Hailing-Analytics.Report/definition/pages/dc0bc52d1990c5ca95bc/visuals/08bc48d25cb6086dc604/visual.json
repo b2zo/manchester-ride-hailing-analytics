@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "08bc48d25cb6086dc604",
+  "position": {
+    "x": 20.425531914893618,
+    "y": 442.55319148936172,
+    "z": 6000,
+    "height": 270.3951367781155,
+    "width": 479.51367781155017,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Recommended Strategy",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "11pt",
+                      "color": "#107c10"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Dynamic recommendation measure added to the model",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Prioritise the top-profit areas shown on the right",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Focus on Friday/Saturday evening and late-night windows",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Airport trips create stable demand but compare profit/hour before waiting",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Avoid weak midday periods unless nearby demand is strong",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "47e560860e409bb540ec",
+  "position": {
+    "x": 1045.5927051671733,
+    "y": 64.194528875379945,
+    "z": 4000,
+    "height": 149.78723404255319,
+    "width": 214.95440729483283,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trips_clean"
+                    }
+                  },
+                  "Property": "Airport Trip %"
+                }
+              },
+              "queryRef": "trips_clean.Airport Trip %",
+              "nativeQueryRef": "Airport Trip %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "trips_clean"
+                  }
+                },
+                "Property": "Airport Trip %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c33de42887d0787add29",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "trips_clean"
+              }
+            },
+            "Property": "Airport Trip %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

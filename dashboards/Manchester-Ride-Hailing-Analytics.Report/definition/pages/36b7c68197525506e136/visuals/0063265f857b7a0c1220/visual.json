@@ -1,0 +1,82 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "0063265f857b7a0c1220",
+  "position": {
+    "x": 847.17325227963534,
+    "y": 210.09118541033436,
+    "z": 8000,
+    "height": 230.51671732522797,
+    "width": 409.48328267477206,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Airport Insights",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "11pt",
+                      "color": "#ff8c00"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Airport trips represent a major share of demand",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Revenue is strong but hourly profit must be compared with city-centre areas",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Airport runs provide predictable demand and longer journeys",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Best airport windows are early morning and late evening",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

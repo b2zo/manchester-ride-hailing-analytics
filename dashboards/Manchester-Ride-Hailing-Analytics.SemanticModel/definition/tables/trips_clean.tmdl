@@ -1,0 +1,495 @@
+table trips_clean
+	lineageTag: 48a64f12-ce73-405d-b56d-e67d4c12206f
+
+	measure 'Total Revenue' =
+			
+			SUM(trips_clean[total_earnings])
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: b96c592c-947a-4227-a0ad-413ccd0ec88b
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Total Trips' =
+			
+			COUNT(trips_clean[trip_id])
+		formatString: 0
+		lineageTag: abe99a13-8cc6-4641-8f85-bd5ce099599f
+
+	measure 'Average Earnings Per Hour' =
+			
+			AVERAGE(trips_clean[earnings_per_hour])
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: b0f1e5b6-b150-4be5-aa37-3f36573c5f4f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Average Earnings Per Mile' =
+			
+			AVERAGE(trips_clean[earnings_per_mile])
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 7c24ef44-cd79-453f-9a83-924c43d7d090
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Total Net Profit' =
+			
+			SUM(trips_clean[net_profit])
+		formatString: 0
+		lineageTag: 091072cc-903a-43a8-8b2f-87fafbd39fa7
+
+	measure 'Average Profit Per Hour' =
+			
+			AVERAGE(trips_clean[profit_per_hour])
+		formatString: 0
+		lineageTag: 4205cb9a-a017-4927-96ae-372ca08989eb
+
+	measure 'Airport Revenue' =
+			
+			CALCULATE(
+			    SUM(trips_clean[total_earnings]),
+			    trips_clean[airport_trip] = TRUE()
+			)
+		formatString: 0
+		lineageTag: 724bd777-10cd-4c69-810e-8dc0d3251048
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Airport Trip %' =
+			
+			DIVIDE(
+			    [Airport Trips],
+			    [Total Trips]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0d0520e1-fb2b-4479-b736-1ea070c9ff93
+
+	measure 'Airport Trips' =
+			
+			CALCULATE(
+			    COUNTROWS(trips_clean),
+			    trips_clean[airport_trip] = TRUE()
+			)
+		formatString: 0
+		lineageTag: 34b8e8b5-e1b5-4401-8292-a7a796bc1c73
+
+	measure 'Airport Avg Profit Per Hour' =
+			
+			CALCULATE(
+			    AVERAGE(trips_clean[profit_per_hour]),
+			    trips_clean[airport_trip] = TRUE()
+			)
+		lineageTag: bb6fb68e-6892-4652-a5a3-945f5a368ab1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Best Area' =
+			
+			VAR TopArea =
+			    TOPN(
+			        1,
+			        VALUES(trips_clean[pickup_area]),
+			        [Average Profit Per Hour],
+			        DESC
+			    )
+			RETURN
+			    CONCATENATEX(
+			        TopArea,
+			        trips_clean[pickup_area],
+			        ", "
+			    )
+		lineageTag: a05d26de-b77e-4efa-aa4a-c5bdc35b10e9
+
+	measure 'Best Day' =
+			
+			VAR TopDay =
+			    TOPN(
+			        1,
+			        VALUES(trips_clean[day_of_week]),
+			        [Average Profit Per Hour],
+			        DESC
+			    )
+			RETURN
+			    CONCATENATEX(
+			        TopDay,
+			        trips_clean[day_of_week],
+			        ", "
+			    )
+		lineageTag: f8aa2b42-b8a5-4a0b-adca-5e5986427f9a
+
+	measure 'Best Hour' =
+			
+			VAR TopHour =
+			    TOPN(
+			        1,
+			        VALUES(trips_clean[hour_of_day]),
+			        [Average Profit Per Hour],
+			        DESC
+			    )
+			RETURN
+			    CONCATENATEX(
+			        TopHour,
+			        FORMAT(trips_clean[hour_of_day], "00") & ":00",
+			        ", "
+			    )
+		lineageTag: ea533b07-6a39-4e4f-9f82-4d85cba69728
+
+	measure 'Driver Recommendation' =
+			
+			"Work primarily in " &
+			[Best Area] &
+			". Focus on " &
+			[Best Day] &
+			" and prioritise trips around " &
+			[Best Hour] &
+			"."
+		lineageTag: cc0eb90c-5cd1-4947-9cd9-c24a19ea6b00
+
+	measure 'Airport Profit Premium' =
+			
+			[Airport Avg Profit Per Hour]
+			-
+			CALCULATE(
+			    [Average Profit Per Hour],
+			    trips_clean[airport_trip] = FALSE()
+			)
+		lineageTag: 6d0fca77-d976-4a98-87fd-86b4640590ea
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit Per Hour Raw Avg' =
+			
+			AVERAGE(trips_clean[profit_per_hour])
+		lineageTag: 21db3812-9f00-4943-a82e-888ae4e733d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Best Area Label' =
+			
+			VAR TopArea =
+			    TOPN(
+			        1,
+			        ADDCOLUMNS(VALUES(trips_clean[pickup_area]), "__value", [Average Profit Per Hour]),
+			        [__value], DESC
+			    )
+			RETURN
+			    CONCATENATEX(TopArea, trips_clean[pickup_area] & " | £" & FORMAT([__value], "0") & "/hr", ", ")
+		lineageTag: bfc9084c-6412-40b9-83a1-9276630dd0de
+
+	measure 'Best Day Label' =
+			
+			VAR TopDay =
+			    TOPN(
+			        1,
+			        ADDCOLUMNS(VALUES(trips_clean[day_of_week]), "__value", [Average Profit Per Hour]),
+			        [__value], DESC
+			    )
+			RETURN
+			    CONCATENATEX(TopDay, trips_clean[day_of_week] & " | £" & FORMAT([__value], "0") & "/hr", ", ")
+		lineageTag: cffd756f-b63c-44c8-a6be-36aa5d24395f
+
+	measure 'Best Hour Label' =
+			
+			VAR TopHour =
+			    TOPN(
+			        1,
+			        ADDCOLUMNS(VALUES(trips_clean[hour_of_day]), "__value", [Average Profit Per Hour]),
+			        [__value], DESC
+			    )
+			RETURN
+			    CONCATENATEX(TopHour, FORMAT(trips_clean[hour_of_day], "00") & ":00 | £" & FORMAT([__value], "0") & "/hr", ", ")
+		lineageTag: d77ae4b6-21f7-42ff-85a6-7a16b3ed5224
+
+	measure 'Driver Recommendation Enhanced' =
+			
+			"Recommended strategy: focus on " & [Best Area] & ", prioritise " & [Best Day] & " and target the " & [Best Hour] & " window. Compare airport work against city-centre profit/hour before waiting."
+		lineageTag: 9cbbb9d8-3fe0-4140-8378-c349834510c5
+
+	measure 'Airport Strategy Insight' =
+			
+			"Airport trips account for " & FORMAT([Airport Trip %], "0.0%") & " of demand and generate " & FORMAT([Airport Revenue], "£#,0") & " revenue. Use airport trips as stable demand, but compare profit/hour against city-centre areas."
+		lineageTag: ee6095db-fab0-46f6-9c2e-9cf5b41e8677
+
+	measure 'Revenue KPI Indicator' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Total Revenue] >= 90000, "🟢 Strong revenue",
+			    [Total Revenue] >= 70000, "🟡 Revenue near target",
+			    "🔴 Revenue below target"
+			)
+		lineageTag: 3e7a213f-6f5a-48af-8242-7fc717850f4d
+
+	measure 'Trips KPI Indicator' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Total Trips] >= 7000, "🟢 High trip volume",
+			    [Total Trips] >= 5500, "🟡 Stable trip volume",
+			    "🔴 Low trip volume"
+			)
+		lineageTag: aa8f82e9-25f5-48e1-b02a-408a6594ccbf
+
+	measure 'Hourly KPI Indicator' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Average Earnings Per Hour] >= 25, "🟢 Above target hourly rate",
+			    [Average Earnings Per Hour] >= 20, "🟡 Acceptable hourly rate",
+			    "🔴 Below hourly target"
+			)
+		lineageTag: 947b6cc9-c365-4eba-ac6a-5c9ef80a16cd
+
+	measure 'Mile KPI Indicator' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Average Earnings Per Mile] >= 1.5, "🟢 Efficient £/mile",
+			    [Average Earnings Per Mile] >= 1.1, "🟡 Acceptable £/mile",
+			    "🔴 Low £/mile"
+			)
+		lineageTag: cbf39ba4-cb4a-4ce4-b28a-d0977962dd99
+
+	column trip_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ce486f8-3c9b-460f-affe-cbb4967bfcf9
+		summarizeBy: sum
+		sourceColumn: trip_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 11111ed8-d8a5-47ad-8a4c-56ae76338a8d
+		summarizeBy: none
+		sourceColumn: start_datetime
+
+		variation Variation
+			isDefault
+			relationship: 448498dd-5d49-4c42-8cfb-4365030bcd13
+			defaultHierarchy: LocalDateTable_376e9582-1538-4dd2-a3cc-50f54d53f0a7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 79216e67-0f59-44d5-93eb-e0cc40490d6e
+		summarizeBy: none
+		sourceColumn: trip_date
+
+		variation Variation
+			isDefault
+			relationship: 50a8ed28-9a10-4b2e-8347-5e4828ae5957
+			defaultHierarchy: LocalDateTable_f8179624-0071-488c-b871-5f5d710969e4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column day_of_week
+		dataType: string
+		lineageTag: 8df77849-207c-45c4-8b70-fc3114aed130
+		summarizeBy: none
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour_of_day
+		dataType: int64
+		formatString: 0
+		lineageTag: f815ce95-c686-4028-8956-a762b5678e66
+		summarizeBy: sum
+		sourceColumn: hour_of_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_period
+		dataType: string
+		lineageTag: 98d15015-1a76-4c5e-9fca-cb82e1e2632a
+		summarizeBy: none
+		sourceColumn: time_period
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_area
+		dataType: string
+		lineageTag: b9d4ab0e-c7ac-4dd9-b8e5-a2683ab939ca
+		summarizeBy: none
+		sourceColumn: pickup_area
+
+		annotation SummarizationSetBy = Automatic
+
+	column dropoff_area
+		dataType: string
+		lineageTag: f6ea5961-de03-4738-8ad8-de798372d07b
+		summarizeBy: none
+		sourceColumn: dropoff_area
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_lat
+		dataType: string
+		lineageTag: c4933c94-349b-41a0-9786-287b26768c63
+		summarizeBy: none
+		sourceColumn: pickup_lat
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_lon
+		dataType: string
+		lineageTag: e667cbf3-d049-4610-87d2-8d7ab0dd38ee
+		summarizeBy: none
+		sourceColumn: pickup_lon
+
+		annotation SummarizationSetBy = Automatic
+
+	column dropoff_lat
+		dataType: string
+		lineageTag: d0b4161b-a6b1-4a1d-8954-7c23870e8078
+		summarizeBy: none
+		sourceColumn: dropoff_lat
+
+		annotation SummarizationSetBy = Automatic
+
+	column dropoff_lon
+		dataType: string
+		lineageTag: 5ada51c0-244e-4d0a-b741-9809eee47a0a
+		summarizeBy: none
+		sourceColumn: dropoff_lon
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_miles
+		dataType: double
+		lineageTag: 79247bc5-0980-4843-afbb-52f2e09068ec
+		summarizeBy: sum
+		sourceColumn: distance_miles
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column duration_minutes
+		dataType: double
+		lineageTag: bbcc6a07-4d63-477b-86f8-e5ddde8c6f9e
+		summarizeBy: sum
+		sourceColumn: duration_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fare
+		dataType: double
+		lineageTag: b5499720-fd52-4af0-95c8-b15aa11e82fa
+		summarizeBy: sum
+		sourceColumn: fare
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tip
+		dataType: double
+		lineageTag: d1b4150d-42db-421c-8e6b-c71b9595e0a8
+		summarizeBy: sum
+		sourceColumn: tip
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_earnings
+		dataType: double
+		lineageTag: ddb8f934-42b5-4f68-b667-3e5bfad32bbc
+		summarizeBy: sum
+		sourceColumn: total_earnings
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column estimated_cost
+		dataType: double
+		lineageTag: 9b35457c-ba29-4a9d-94a8-af1de205214b
+		summarizeBy: sum
+		sourceColumn: estimated_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_profit
+		dataType: double
+		lineageTag: 2156a2cb-531c-4956-8cf4-f37a1f052e1f
+		summarizeBy: sum
+		sourceColumn: net_profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column airport_trip
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6e721980-f583-4615-9ac3-ed02b3ab65cf
+		summarizeBy: none
+		sourceColumn: airport_trip
+
+		annotation SummarizationSetBy = Automatic
+
+	column earnings_per_mile
+		dataType: double
+		lineageTag: aa13f3a6-4ec3-4cba-ab65-ecfaf7fdf705
+		summarizeBy: sum
+		sourceColumn: earnings_per_mile
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column earnings_per_hour
+		dataType: double
+		lineageTag: 08de1208-36c2-46fa-a884-47c4ae281273
+		summarizeBy: sum
+		sourceColumn: earnings_per_hour
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column profit_per_hour
+		dataType: double
+		lineageTag: 61f41c49-2004-4b20-972d-376edb950b82
+		summarizeBy: sum
+		sourceColumn: profit_per_hour
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b4bf0a92-64ef-4b81-9c42-3dbcc993f876
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition trips_clean = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\B2zo\manchester-ride-hailing-analytics\data\processed\trips_clean.csv"),[Delimiter=",", Columns=24, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"start_datetime", type datetime}, {"trip_date", type date}, {"hour_of_day", Int64.Type}, {"trip_id", Int64.Type}, {"distance_miles", type number}, {"duration_minutes", type number}, {"fare", type number}, {"tip", type number}, {"total_earnings", type number}, {"estimated_cost", type number}, {"net_profit", type number}, {"earnings_per_mile", type number}, {"earnings_per_hour", type number}, {"profit_per_hour", type number}, {"airport_trip", type logical}, {"is_weekend", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "5ce90148dbc873c195e1",
+  "position": {
+    "x": 20.425531914893618,
+    "y": 64.194528875379945,
+    "z": 1000,
+    "height": 149.78723404255319,
+    "width": 384.19452887537994,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trips_clean"
+                    }
+                  },
+                  "Property": "Best Area Label"
+                }
+              },
+              "queryRef": "trips_clean.Best Area Label",
+              "nativeQueryRef": "Best Area Label"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "08d9fcf122590d29dce2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "trips_clean"
+              }
+            },
+            "Property": "Best Area Label"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

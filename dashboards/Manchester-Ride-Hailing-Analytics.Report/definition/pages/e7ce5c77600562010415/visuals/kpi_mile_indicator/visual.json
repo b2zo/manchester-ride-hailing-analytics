@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "kpi_mile_indicator",
+  "position": {
+    "x": 981.39817629179333,
+    "y": 164.37689969604864,
+    "z": 9000,
+    "height": 83.647416413373861,
+    "width": 258.72340425531917,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "trips_clean"
+                    }
+                  },
+                  "Property": "Mile KPI Indicator"
+                }
+              },
+              "queryRef": "trips_clean.Mile KPI Indicator",
+              "nativeQueryRef": "Mile KPI Indicator"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FF8C00'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "trips_clean.Mile KPI Indicator"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

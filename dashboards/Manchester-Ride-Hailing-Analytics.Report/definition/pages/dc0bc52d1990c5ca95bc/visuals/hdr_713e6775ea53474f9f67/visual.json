@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "hdr_713e6775ea53474f9f67",
+  "position": {
+    "x": 20,
+    "y": 6,
+    "z": 13000,
+    "height": 42,
+    "width": 1220,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "DRIVER STRATEGY",
+                    "textStyle": {
+                      "fontSize": "17pt",
+                      "fontWeight": "bold",
+                      "color": "#111827"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Manchester Ride-Hailing Analytics | Interactive strategy dashboard",
+                    "textStyle": {
+                      "fontSize": "7pt",
+                      "color": "#64748B"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

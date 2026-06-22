@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "hdr_bc924100f43d4755b0d7",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 9000,
+    "height": 41.823708206686931,
+    "width": 1219.6960486322189,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "AREA PROFITABILITY",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "17pt",
+                      "color": "#111827"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Manchester Ride-Hailing Analytics | Interactive strategy dashboard",
+                    "textStyle": {
+                      "fontSize": "7pt",
+                      "color": "#64748b"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
