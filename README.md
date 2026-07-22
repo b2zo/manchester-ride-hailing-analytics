@@ -68,7 +68,7 @@ Business Recommendations
 
 ### Area Profitability
 
-![Area Profitability](assets/area_profitability.png)
+![Area Profitability](assets/areas_profitability.png)
 
 ### Airport Strategy
 
@@ -158,7 +158,7 @@ manchester-ride-hailing-analytics/
 │
 ├── assets/
 │   ├── executive_overview.png
-│   ├── area_profitability.png
+│   ├── areas_profitability.png
 │   ├── airport_strategy.png
 │   ├── time_analysis.png
 │   └── driver_strategy.png
