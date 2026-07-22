@@ -1,5 +1,7 @@
 # Manchester Ride-Hailing Demand Analytics
 
+![Executive Overview](assets/executive_overview.png)
+
 A portfolio data analytics project analysing ride-hailing trip profitability across Greater Manchester using Python, SQL and Power BI.
 
 ---
@@ -131,7 +133,7 @@ Business Recommendations
 * Airport trips represented approximately 27% of total demand
 * Airport trips produced stable revenue but lower hourly profitability
 * Friday and Saturday evenings were the most profitable periods
-* 02:00 was identified as the highest earning hour
+* The strongest driving strategy combined location, time and trip-type selection.
 * Midday periods consistently generated the lowest earnings
 * City-centre pickup areas outperformed suburban locations
 
